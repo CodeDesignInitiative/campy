@@ -14,28 +14,28 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-brand-lightest h-screen antialiased">
-    
+
         <nav class="bg-white shadow mb-8 pl-8 md:px-0 flex justify-between">
-            
+
                         <div class="p-4 pl-8 flex-1">
                             <div class="md:flex">
-                                <div class="mb-2 md:mb-0"><a href="{{ url('/home') }}" class="no-underline font-bold mr-4 font-blue-light">{{ config('app.name') }}</a></div>
+                                <div class="mb-2 md:mb-0"><a href="{{ url('/home') }}" class="font-bold mr-4 font-blue-light"><img src="{{ asset('img/logo/codedesign.png') }}" height=25></a></div>
                                 <div>
                                    @auth
                                     <a href="/camps">Alle Camps</a> |
                                     <a href="/mycamps">Meine Camps</a>
-                                   @endauth 
+                                   @endauth
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="p-4 ">
                             @guest
                                 <a class="no-underline hover:underline text-grey-darker pr-3 text-sm" href="{{ url('/login') }}">Login</a>
                                 <a class="no-underline hover:underline text-grey-darker text-sm" href="{{ url('/register') }}">Registrieren</a>
                             @else
                                 <span class="text-grey-darker text-sm pr-4">{{ Auth::user()->name }}</span>
-    
+
                                 <a href="{{ route('logout') }}"
                                     class="no-underline hover:underline text-grey-darker text-sm"
                                     onclick="event.preventDefault();
@@ -50,7 +50,7 @@
         <main class="w-full p-8" id="app">
             @yield('content')
         </main>
-        
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
