@@ -18,7 +18,7 @@ jobs:
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: circleci
+          MYSQL_DATABASE: campy_testing
     steps:
       - checkout
       
@@ -28,7 +28,7 @@ jobs:
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
+      - run: apt-get install php-mysql
       - run: composer install -n --prefer-dist
       - run:
           name: Wait for DB
