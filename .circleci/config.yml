@@ -28,7 +28,7 @@ jobs:
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      - run: apt-get install php-mysql
+      - run: sudo apt-get install php-mysql
       - run: composer install -n --prefer-dist
       - run:
           name: Wait for DB
