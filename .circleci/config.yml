@@ -1,24 +1,51 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
 version: 2
 jobs:
   build:
     docker:
+      # specify the version you desire here
       - image: circleci/php:7.2.9-apache-node-browsers
-      - image: circleci/mysql
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: campy_testing
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
     steps:
+      - run:
+          name: Install PDO-MySQL
+          command: |
+            sudo docker-php-ext-install pdo_mysql
+            sudo docker-php-ext-enable pdo_mysql
       - checkout
+      
+      # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "composer.json" }}
+          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
       - run:
           name: Composer install
           command: composer install -n --prefer-dist
       - run:
-          name: Migrate Database
-          command: php artisan migrate:fresh --force
+          name: Generate Artisan-Key
+          command: |
+            php artisan key:generate --env=testing
       - run:
-          name: Run Tests
-          command: vendor/bin/phpunit
+          name: Initialize Database
+          command: |
+            dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+            php artisan migrate --env=testing --force
+      - run:
+          name: Running Tests
+          command: vendor/bin/phpunit 
       - save_cache:
           paths:
             - ./vendor
