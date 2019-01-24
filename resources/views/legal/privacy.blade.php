@@ -36,13 +36,14 @@
 <em>Unterschrift</em>: Rechtssichere Bestätigung der Anmeldung und Teilnahme</li>
 <li>
 <em>Daten der Erziehungsberechtigten:</em> Kontaktaufnahme a, zur rechtssichere Bestätigung der Einwilligung und Teilnahmebedingungen und b, bei Problemen während der Campzeit</li>
+</li>
 </ul>
 </li>
-<li>
+</ul>
 <h2>
 <a id="user-content-was-passiert-nach-dem-camp-mit-den-daten" class="anchor" href="#was-passiert-nach-dem-camp-mit-den-daten" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Was passiert nach dem Camp mit den Daten?</em>
 </h2>
-</li>
+<ul>
 <li>
 <p><em>Werden die Personendaten mit Dritten geteilt?</em></p>
 <ul>

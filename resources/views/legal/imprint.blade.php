@@ -14,7 +14,7 @@
             Vorstände: Thomas Bachem, Manuel Dolderer</p>
 
             <p class="mb-8">Kontakt:<br/>
-            E-Mail: hello@code.design<br/>
+            E-Mail: <a class="no-underline hover:underline" href="mailto:hello@code.design">hello@code.design</a><br/>
             Registereintrag:<br/>
             Eintragung im Vereinsregister. <br/>
             Registergericht:Berlin<br/>

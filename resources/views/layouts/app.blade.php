@@ -21,61 +21,63 @@
 </head>
 <body class="font-sans h-screen antialiased">
     
-        <nav class="bg-white shadow mb-8 pl-8 md:px-0 flex justify-between">
+    <nav class="bg-white shadow mb-8 pl-8 md:px-0 flex justify-between">
             
-                        <div class="p-4 pl-8 flex-1">
-                            <div class="md:flex items-center">
-                                <div class="mb-2 md:mb-0"><a href="{{ url('/profile') }}" class="text-brand no-underline font-bold mr-4 text-xl">Code+Design Camps</a></div>
-                                <div>
-                                   @auth
-                                    <a href="/camps">Alle Camps</a> |
-                                    <a href="/mycamps">Meine Camps</a>
-                                    @can('isAdmin')| <a href="/admin">Admin</a>@endcan
-                                   @endauth 
+        <div class="p-4 pl-8 flex-1">
+            <div class="md:flex items-center">
+                <div class="mb-2 md:mb-0">
+                    <a href="{{ url('/profile') }}" class="text-brand no-underline font-bold mr-4 text-xl">Code+Design Camps</a>
+                </div>
+                <div>
+                    @auth
+                    <a href="/camps">Alle Camps</a> |
+                    <a href="/mycamps">Meine Camps</a>
+                    @can('isAdmin')| <a href="/admin">Admin</a>@endcan
+                    @endauth 
 
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="p-4 ">
-                            @guest
-                                <a class="no-underline hover:underline text-grey-darker pr-3 text-sm" href="{{ url('/login') }}">Login</a>
-                                <a class="no-underline hover:underline text-grey-darker text-sm" href="{{ url('/register') }}">Registrieren</a>
-                            @else
-                                <span class="text-grey-darkest text-sm pr-4"><a href="/profile">Dein Profil</a></span>
-    
-                                <a href="{{ route('logout') }}"
-                                    class="no-underline hover:underline text-grey-darker text-sm"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">Logout</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                                    {{ csrf_field() }}
-                                </form>
-                            @endguest
-                        </div>
-        </nav>
+                </div>
+            </div>
+        </div>
+                
+        <div class="p-4 ">
+            @guest
+                <a class="no-underline hover:underline text-grey-darker pr-3 text-sm" href="{{ url('/login') }}">Login</a>
+                <a class="no-underline hover:underline text-grey-darker text-sm" href="{{ url('/register') }}">Registrieren</a>
+            @else
+                <span class="text-grey-darkest text-sm pr-4"><a href="/profile">Dein Profil</a></span>
+
+                <a href="{{ route('logout') }}"
+                    class="no-underline hover:underline text-grey-darker text-sm"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    {{ csrf_field() }}
+                </form>
+            @endguest
+        </div>
+    </nav>
 
         <main class="w-full p-8" id="app">
             @yield('content')
         </main>
         
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-    Smooch.init({
-        appId: '596dbeee3154052401f51a2c',
-        locale: 'de-DE',
-        customText: {
-            headerText: 'Wie können wir helfen?',
-            inputPlaceholder: 'Schreib uns…',
-            introAppText: 'Schreib uns hier oder auf Facebook.',
-            introductionText: 'Wir helfen dir bei allen Fragen zur und Problemen mit der Camp-Anmeldung.',
-            sendButtonText: 'Abschicken'
-        }
-    }).then(function() {
-        // Your code after init is complete
-    });
-</script>
-    @yield('scripts')
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+            Smooch.init({
+                appId: '596dbeee3154052401f51a2c',
+                locale: 'de-DE',
+                customText: {
+                    headerText: 'Wie können wir helfen?',
+                    inputPlaceholder: 'Schreib uns…',
+                    introAppText: 'Schreib uns hier oder auf Facebook.',
+                    introductionText: 'Wir helfen dir bei allen Fragen zur und Problemen mit der Camp-Anmeldung.',
+                    sendButtonText: 'Abschicken'
+                }
+            }).then(function() {
+                // Your code after init is complete
+            });
+        </script>
+        @yield('scripts')
 </body>
 </html>

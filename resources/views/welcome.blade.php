@@ -34,69 +34,66 @@
 
         <div class="flex items-center justify-center mt-8">
             <div class="flex flex-col mt-4 lg">
-                <h1 class="text-grey-darker text-center tracking-normal text-7xl mb-6">
-                    Code+Design Camps
-                </h1>
-                <div class="text-center mb-8">
-                    @auth
-                        <a href="{{ url('/profile') }}" class="block no-underline hover:underline text-sm text-brand-dark uppercase">Zum Profil</a>
-                    @else
-                        <a href="{{ route('register') }}" class="mb-4 inline-block no-underline hover:underline text-sm  bg-brand-dark text-white rounded-lg p-4 tracking-wide">Für Camp anmelden</a>
-                        <p class="font-normal">Dein x-tes Camp? <a href="{{ route('login') }}" class="text-sm font-normal pr-6">Login</a></p>
-                    @endauth
-                
-
-                    <ul class="hidden mt-8 list-reset">
-                        <li class="inline pr-8">
-                            <a href="https://code.design" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Webseite" target="_blank">Webseite</a>
-                        </li>
-                        <li class="inline pr-8">
-                            <a href="https://www.instagram.com/codeunddesign/" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Instagram" target="_blank">Instagram</a>
-                        </li>
-                        <li class="inline pr-8">
-                            <a href="https://twitter.com/codeunddesign?lang=de" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Twitter" target="_blank">Twitter</a>
-                        </li>
-                        <li class="inline pr-8">
-                            <a href="https://www.youtube.com/channel/UCuT3xJjPZFqQEEpleHBxVuA" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Youtube" target="_blank">Youtube</a>
-                        </li>
-                        <li class="inline pr-8">
-                            <a href="https://github.com/CodeDesignInitiative" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="GitHub" target="_blank">GitHub</a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="flex table-responsive items-center">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Stadt</th>
-                                <th scope="col">Von</th>
-                                <th scope="col">Bis</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($camps as $camp)
+                <div>
+                    <h1 class="text-grey-darker text-center tracking-normal text-7xl mb-6">
+                        Code+Design Camps
+                    </h1>
+                    <div class="text-center mb-8">
+                        @auth
+                            <a href="{{ route('profile') }}" class="block no-underline hover:underline text-sm text-brand-dark uppercase">Zum Profil</a>
+                        @else
+                            <a href="{{ route('register') }}" class="mb-4 inline-block no-underline hover:underline text-sm  bg-brand-dark text-white rounded-lg p-4 tracking-wide">Für Camp anmelden</a>
+                            <p class="font-normal">Dein x-tes Camp? <a href="{{ route('login') }}" class="text-sm font-normal pr-6">Login</a></p>
+                        @endauth
+                        <ul class="hidden mt-8 list-reset">
+                            <li class="inline pr-8">
+                                <a href="https://code.design" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Webseite" target="_blank">Webseite</a>
+                            </li>
+                            <li class="inline pr-8">
+                                <a href="https://www.instagram.com/codeunddesign/" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Instagram" target="_blank">Instagram</a>
+                            </li>
+                            <li class="inline pr-8">
+                                <a href="https://twitter.com/codeunddesign?lang=de" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Twitter" target="_blank">Twitter</a>
+                            </li>
+                            <li class="inline pr-8">
+                                <a href="https://www.youtube.com/channel/UCuT3xJjPZFqQEEpleHBxVuA" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="Youtube" target="_blank">Youtube</a>
+                            </li>
+                            <li class="inline pr-8">
+                                <a href="https://github.com/CodeDesignInitiative" class="no-underline hover:underline text-sm font-normal text-brand-dark uppercase" title="GitHub" target="_blank">GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex table-responsive items-center">
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td class="font-bold"><p class="font-bold">{{ $camp->city }}</p></td>
-                                    <td>{{ $camp->from->format('d.m.') }}</td>
-                                    <td>{{ $camp->to->format('d.m.Y') }}</td>
-                                    <td class=""><p class="flex items-center"><span class="mr-2 inline-block rounded-full w-3 h-3 @if ( $camp->status == 'Warteliste' ) bg-orange-light @else bg-green text-white @endif">&zwnj;</span>{{ $camp->status }}</p></td>
+                                    <th scope="col">Stadt</th>
+                                    <th scope="col">Von</th>
+                                    <th scope="col">Bis</th>
+                                    <th scope="col">Status</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="mt-4 text-center leading-loose">
-                    <p class="text-xl">Bei Fragen oder Problemen mit der Anmeldung?</p>
-                    <p>Wir helfen gerne per <a href="mailto:hello@code.design">Mail</a> oder <a href="javascript:Smooch.open();">Live-Support</a></p>
-                </div>
-
-                <div class="mt-4 text-center leading-loose">
-                    <p class="text-xs">
-                        <a href="/impressum">Impressum</a>
-                    </p>
+                            </thead>
+                            <tbody>
+                                @foreach ($camps as $camp)
+                                    <tr>
+                                        <td class="font-bold"><p class="font-bold">{{ $camp->city }}</p></td>
+                                        <td>{{ $camp->from->format('d.m.') }}</td>
+                                        <td>{{ $camp->to->format('d.m.Y') }}</td>
+                                        <td><p class="flex items-center"><span class="mr-2 inline-block rounded-full w-3 h-3 @if ( $camp->status == 'Warteliste' ) bg-orange-light @else bg-green text-white @endif">&zwnj;</span>{{ $camp->status }}</p></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                  
+                    <div class="mt-4 text-center leading-loose"><p class="text-xl">Bei Fragen oder Problemen mit der Anmeldung?</p>
+                        <p>Wir helfen gerne per <a href="mailto:hello@code.design">Mail</a> oder <a href="javascript:Smooch.open();">Live-Support</a></p>
+                    </div>
+                    <div class="mt-4 text-center leading-loose">
+                        <p class="text-xs">
+                            <a href="/impressum">Impressum</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
